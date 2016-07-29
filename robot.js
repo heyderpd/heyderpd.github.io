@@ -13,6 +13,11 @@ function Running(){
         return;
     }
 }
+function getQuery(){
+    var query = window.location.href.split('?');
+    var query = query.length == 2 ? query[1] : '';
+    return query;
+}
 function start(){
     /* start game */
     if(Runner.call().paused)
