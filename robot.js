@@ -24,33 +24,25 @@ function RUN(Item){
 
 function AUTO(Item){
     if(Item.processed == undefined){
-        if(Item.yPos >= 75)
-            if(Item.xPos <= 300) //350 300, 200 170 160 130 120 100
-                if(TryJump()) {
+        if(Item.yPos >= 75) {
+            if(Item.xPos <= 300) { //350 300, 200 170 160 130 120 100
+                if(TryJump())
                     Item.processed = true;
-                    return true;
-                }
-        else
+                return true;
+            }
+        } else
             Item.processed = true;
     }
     return false;
 }
 
 function TryJump(){
-    for (var j=0; j<100; j++) {
-        if(Jump())
-            return true;
-    };
-    return false;
-}
-
-function Jump(){
     if(!tRex.jumping){
-        console.log('Jump!');
+        //console.log('Jump!');
         tRex.startJump(true);
         return true;
     }
-    console.log('Can\'t Jump!');
+    //console.log('Can\'t Jump!');
     return false;
 }
 
