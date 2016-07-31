@@ -118,7 +118,7 @@ function setJumpLength(){
         Position.Jump = parseInt(Canvas.width *0.4  *Speed);
         Position.Duck = parseInt(Canvas.width *0.11 *Speed);
         Position.Duck = Position.Duck < 60 ? 60 : Position.Duck;
-        console.log('setJumpLength', Game.currentSpeed, Position);
+        //console.log('setJumpLength', Game.currentSpeed, Position);
     }
 }
 
