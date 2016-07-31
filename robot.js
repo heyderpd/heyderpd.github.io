@@ -27,7 +27,7 @@ function RUN(Item){
 
 function AUTO(Item){
     //if(Item.processed == undefined){
-        if(Item.yPos == 75) {
+        if(Item.yPos <= 75 && Item.yPos < 70) {
             if(Item.xPos <= Position.Duck)
                 if(TryDuck())
                     Item.processed = true;
