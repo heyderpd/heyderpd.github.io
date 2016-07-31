@@ -63,14 +63,14 @@ function TryJump(){
 }
 
 function TryDuck(){
-    console.log(tRex);
+    //console.log(tRex);
     if(!tRex.jumping){
-        console.log('Duck!');
+        //console.log('Duck!');
         pressKey('40');
         //tRex.setDuck(true);
         return true;
     }
-    console.log('Can\'t Duck!');
+    //console.log('Can\'t Duck!');
     return false;
 }
 
@@ -95,7 +95,8 @@ function setGameMode(){
             var Func = RUN;
             break;
         case 'autonosaurus':
-            Game.setSpeed( Game.config['MAX_SPEED'] = Game.config['SPEED'] = 13);
+            Game.config['MAX_SPEED'] = 16;
+            //Game.setSpeed( Game.config['MAX_SPEED'] = Game.config['SPEED'] = 16);
             var Func = AUTO;
         /*default:
             var Func = function(){};*/
@@ -111,17 +112,22 @@ function setKeyCodes(Active){
 }
 
 function setJumpLength(){
-    Canvas = document.getElementsByClassName('runner-canvas')[0];
-    Position.Jump = parseInt(Canvas.width *0.4);
-    Position.Duck = parseInt(Canvas.width *0.11);
-    console.log('setJumpLength', Canvas.width, JumpLength);
+    if(Canvas != undefined){
+        var Speed = Game.currentSpeed /13 *1.00;
+        Position.Jump = parseInt(Canvas.width *0.4  *Speed);
+        Position.Duck = parseInt(Canvas.width *0.11 *Speed);
+        Position.Duck = Position.Duck < 60 ? 60 : Position.Duck;
+        //console.log('setJumpLength', Canvas.width, Game.config['SPEED'], Speed, Position);
+        console.log('setJumpLength', Game.currentSpeed, Position);
+    }
 }
 
 function start(){
-    Canvas = document.getElementsByClassName('runner-canvas')[0];
+    Canvas = document.getElementsByClassName('runner-canvas')[0];    
     Game = Runner.call();
     tRex = Game.tRex;
     Obstacles = Game.horizon.obstacles;
+    setJumpLength();
 
     var Func = function(){};
     if(Mode != '')

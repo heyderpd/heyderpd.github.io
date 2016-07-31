@@ -1655,6 +1655,7 @@ Runner.prototype = {
     } else if (opt_speed) {
       this.currentSpeed = opt_speed;
     }
+    //setJumpLength(); /*DINO_MOD*/
   },
 
   /**
@@ -1906,6 +1907,8 @@ Runner.prototype = {
       this.tRex.update(deltaTime);
       this.raq();
     }
+
+    setJumpLength(); /*DINO_MOD*/
   },
 
   /**
