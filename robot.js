@@ -1,11 +1,14 @@
-/* v3 and v4 run low */
 function createRunning(Func){
     return function() {
-        if (Mode == 'RUN' && (!tRex.ducking || tRex.status != 'DUCKING'))
+        if (Mode == 'velociraptor' && (!tRex.ducking || tRex.status != 'DUCKING'))
             tRex.setDuck(true);
         if(Game.paused)
             Game.play();
         var Obstacles = Game.horizon.obstacles;
+        if(Obstacles.length)
+            Func(Obstacles[0]);
+        return;
+
         for(var i=0; i<Obstacles.length; i++){
             if(Func(Obstacles[i]))
                 return;
@@ -23,26 +26,51 @@ function RUN(Item){
 }
 
 function AUTO(Item){
-    if(Item.processed == undefined){
-        if(Item.yPos >= 75) {
-            if(Item.xPos <= 300) { //350 300, 200 170 160 130 120 100
-                if(TryJump())
+    //if(Item.processed == undefined){
+        if(Item.yPos == 75) {
+            if(Item.xPos <= Position.Duck)
+                if(TryDuck())
                     Item.processed = true;
-                return true;
+        } else {
+            if(Item.yPos > 75) { //75 pitero medio
+                if(Item.xPos <= Position.Jump) { //350 300, 200 170 160 130 120 100
+                    if(TryJump())
+                        Item.processed = true;
+                    return true;
+                }
             }
-        } else
-            Item.processed = true;
-    }
+        }
+    //}
     return false;
+}
+
+function pressKey(keyCode, Time = 250){
+    var e = fakeKey;
+    e.keyCode = keyCode;
+    Game.onKeyDown(e);
+    setTimeout(function(){Game.onKeyUp(e);}, Time);
 }
 
 function TryJump(){
     if(!tRex.jumping){
         //console.log('Jump!');
-        tRex.startJump(true);
+        //tRex.startJump(true);
+        pressKey('38', 100);
         return true;
     }
     //console.log('Can\'t Jump!');
+    return false;
+}
+
+function TryDuck(){
+    console.log(tRex);
+    if(!tRex.jumping){
+        console.log('Duck!');
+        pressKey('40');
+        //tRex.setDuck(true);
+        return true;
+    }
+    console.log('Can\'t Duck!');
     return false;
 }
 
@@ -63,12 +91,10 @@ function setGameMode(){
 
     switch(Mode) {
         case 'velociraptor':
-            Mode = 'RUN';
             Game.setSpeed( Game.config['MAX_SPEED'] = Game.config['SPEED'] = 50);
             var Func = RUN;
             break;
         case 'autonosaurus':
-            Mode = 'AUTO';
             Game.setSpeed( Game.config['MAX_SPEED'] = Game.config['SPEED'] = 13);
             var Func = AUTO;
         /*default:
@@ -84,11 +110,18 @@ function setKeyCodes(Active){
     };
 }
 
+function setJumpLength(){
+    Canvas = document.getElementsByClassName('runner-canvas')[0];
+    Position.Jump = parseInt(Canvas.width *0.4);
+    Position.Duck = parseInt(Canvas.width *0.11);
+    console.log('setJumpLength', Canvas.width, JumpLength);
+}
+
 function start(){
+    Canvas = document.getElementsByClassName('runner-canvas')[0];
     Game = Runner.call();
     tRex = Game.tRex;
     Obstacles = Game.horizon.obstacles;
-    Mode = getQuery();
 
     var Func = function(){};
     if(Mode != '')
@@ -99,22 +132,27 @@ function start(){
     console.log('Run lola!');
 }
 
-var Mode = null;
+var fakeKey = {
+    target : null,
+    type : null,
+    preventDefault : function(){},
+    keyCode : null
+}
+
+var Canvas      = null;
+var Position = {'Jump' : null, 'Duck' : null};
+var Mode = getQuery();
 var Game = null;
 var tRex = null;
 var Obstacles = null;
-
-
-function gameNormal(){
-    window.location.href ='./index.html?';
+var Sprites = {
+    ''             : 'offline-resources-normal',
+    'velociraptor' : 'offline-resources-velociraptor',
+    'autonosaurus' : 'offline-resources-autonosaurus'
 }
 
-function gameVelociraptor(){
-    window.location.href = './index.html?velociraptor';
-}
-
-function gameAutonosaurus(){
-    window.location.href = './index.html?autonosaurus';
+function changeGame(Mode = ''){
+    window.location.href ='./index.html?'+Mode;
 }
 
 /* onready */
