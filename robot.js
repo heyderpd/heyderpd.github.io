@@ -102,14 +102,15 @@ function setGameMode(){
             var Func = function(){};*/
     }
     //setKeyCodes(false);
+    IS_AUTOMATO = true;
     return Func;
 }
 
-function setKeyCodes(Active){
+/*function setKeyCodes(Active){
     Runner.keycodes = {
         JUMP: {'38': Active, '32': Active}, DUCK: {'40': Active},  RESTART: {'13': Active}
     };
-}
+}*/
 
 function setJumpLength(){
     if(Canvas != undefined){
@@ -117,7 +118,6 @@ function setJumpLength(){
         Position.Jump = parseInt(Canvas.width *0.4  *Speed);
         Position.Duck = parseInt(Canvas.width *0.11 *Speed);
         Position.Duck = Position.Duck < 60 ? 60 : Position.Duck;
-        //console.log('setJumpLength', Canvas.width, Game.config['SPEED'], Speed, Position);
         console.log('setJumpLength', Game.currentSpeed, Position);
     }
 }
@@ -145,7 +145,8 @@ var fakeKey = {
     keyCode : null
 }
 
-var Canvas      = null;
+var IS_AUTOMATO = false;
+var Canvas = null;
 var Position = {'Jump' : null, 'Duck' : null};
 var Mode = getQuery();
 var Game = null;
