@@ -1412,14 +1412,13 @@ var DEFAULT_WIDTH = 600;
 var FPS = 60;
 
 /** @const */
-var IS_HIDPI = false;
+var IS_HIDPI = false; /* DINO_MOD */
 
 /** @const */
-var IS_IOS = window.navigator.userAgent.indexOf('CriOS') > -1 ||
-    window.navigator.userAgent == 'UIWebViewForStaticFileContent';
+var IS_IOS = false; /* DINO_MOD */
 
 /** @const */
-var IS_MOBILE = window.navigator.userAgent.indexOf('Mobi') > -1 || IS_IOS;
+var IS_MOBILE = false; /* DINO_MOD */
 
 /** @const */
 var IS_TOUCH_ENABLED = 'ontouchstart' in window;

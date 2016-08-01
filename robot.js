@@ -32,8 +32,8 @@ function AUTO(Item){
                 if(TryDuck())
                     Item.processed = true;
         } else {
-            if(Item.yPos > 75) { //75 pitero medio
-                if(Item.xPos <= Position.Jump) { //350 300, 200 170 160 130 120 100
+            if(Item.yPos > 75) { //75 pitero hit!
+                if(Item.xPos <= Position.Jump) {
                     if(TryJump())
                         Item.processed = true;
                     return true;
@@ -53,24 +53,17 @@ function pressKey(keyCode, Time = 250){
 
 function TryJump(){
     if(!tRex.jumping){
-        //console.log('Jump!');
-        //tRex.startJump(true);
         pressKey('38', 100);
         return true;
     }
-    //console.log('Can\'t Jump!');
     return false;
 }
 
 function TryDuck(){
-    //console.log(tRex);
     if(!tRex.jumping){
-        //console.log('Duck!');
         pressKey('40');
-        //tRex.setDuck(true);
         return true;
     }
-    //console.log('Can\'t Duck!');
     return false;
 }
 
@@ -81,44 +74,43 @@ function getQuery(){
 }
 
 function setGameMode(){
-    /* start game */
-    if(Game.paused)
-        Game.play()
-    //new Runner('.interstitial-wrapper');
-    Game.startGame();
-    Game.playIntro();
-    Game.play();
-
     switch(Mode) {
         case 'velociraptor':
             Game.setSpeed( Game.config['MAX_SPEED'] = Game.config['SPEED'] = 50);
             var Func = RUN;
             break;
         case 'autonosaurus':
-            Game.config['MAX_SPEED'] = 16;
-            //Game.setSpeed( Game.config['MAX_SPEED'] = Game.config['SPEED'] = 16);
+            Game.config['CLOUD_FREQUENCY'] = 0.7;
+            Game.config['GRAVITY'] = 0.7;
+            Game.config['INITIAL_JUMP_VELOCITY'] = 13;
+            Game.config['INVERT_FADE_DURATION'] = 7000;
+            Game.config['MAX_CLOUDS'] = 10;
+            Game.config['MAX_OBSTACLE_LENGTH'] = 4;
+            Game.config['MIN_JUMP_HEIGHT'] = 40;
+            Game.config['CLEAR_TIME'] = 1000;
+            Game.config['ACCELERATION'] = 0.005;
+            Game.config['MAX_SPEED'] = 20;
             var Func = AUTO;
-        /*default:
-            var Func = function(){};*/
     }
-    //setKeyCodes(false);
     IS_AUTOMATO = true;
+
+    if(Game.paused)
+        Game.play()
+    Game.startGame();
+    Game.playIntro();
+    Game.play();
+
     return Func;
 }
 
-/*function setKeyCodes(Active){
-    Runner.keycodes = {
-        JUMP: {'38': Active, '32': Active}, DUCK: {'40': Active},  RESTART: {'13': Active}
-    };
-}*/
-
 function setJumpLength(){
     if(Canvas != undefined){
-        var Speed = Game.currentSpeed /13 *1.00;
+        var Speed = 1 -Math.pow(1 -(Game.currentSpeed /20), 2);
         Position.Jump = parseInt(Canvas.width *0.4  *Speed);
-        Position.Duck = parseInt(Canvas.width *0.11 *Speed);
-        Position.Duck = Position.Duck < 60 ? 60 : Position.Duck;
-        //console.log('setJumpLength', Game.currentSpeed, Position);
+        Position.Duck = parseInt(Canvas.width *0.13 *Speed);
+        Position.Jump = Position.Jump < 110 ? 110 : Position.Jump;
+        Position.Duck = Position.Duck <  60 ?  60 : Position.Duck;
+        //console.log(Game.currentSpeed, Speed, Position);
     }
 }
 
@@ -133,7 +125,6 @@ function start(){
     if(Mode != '')
         var Func = setGameMode()
 
-    /* start macro */
     setInterval( createRunning(Func), 1);
     console.log('Run lola!');
 }
@@ -162,7 +153,6 @@ function changeGame(Mode = ''){
     window.location.href ='./index.html?'+Mode;
 }
 
-/* onready */
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
     start();
