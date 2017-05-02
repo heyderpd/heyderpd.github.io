@@ -11,8 +11,9 @@ var outScritps = [ {name: 'robot.js', javascrip:true},
     });
   });
 
-Promise.all(outScritps).then(
-  function() {
+Promise
+  .all(outScritps)
+  .then(function() {
     for (var i = 0; i < document.scripts.length; i++) {
       var script = document.scripts[i];
       if (script.getAttribute('force') !== 'no') {
