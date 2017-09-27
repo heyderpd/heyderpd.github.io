@@ -1,3 +1,4 @@
+/* https://github.com/heyderpd/scritp-injection-with-fetch */
 (()=>{
   const appendOrReplaceIfExist = (refId, elm) => {
     const ref = document.getElementById(refId)
@@ -75,3 +76,4 @@
 
   window.DocumentInjectionWithFetch = InjectionFromList
 })()
+/* https://github.com/heyderpd/scritp-injection-with-fetch */
