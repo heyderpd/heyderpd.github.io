@@ -218,15 +218,19 @@ hr {
 }
 
 .btn-github .icon {
+  height: 20px;
+  width: 20px;
   opacity: 0.6;
-  background: url("../images/blacktocat.png") 0 0 no-repeat;
+  background: url(/images/blacktocat.svg) 0 0 no-repeat;
+  background-size: 30px 30px;
+
 }
 
 .btn-trex .icon {
   height: 20px;
   width: 20px;
   /*opacity: 0.5;*/
-  background: url(../images/trex.png);
+  background: url(/images/trex.png);
   background-repeat: no-repeat;
   background-position-x: -10px;
   background-size: 30px 30px;
@@ -254,4 +258,25 @@ a {
 
 .cf {
   zoom:1;
+}
+
+.btn > span {
+  display: block;
+  width: 120px;
+  text-align: center;
+}
+
+.trex-icon {
+  height: 100px;
+  background: url(/images/trex.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.btn-menu {
+  display: flex;
+}
+
+.btn-menu > * {
+  margin: 10px;
 }
