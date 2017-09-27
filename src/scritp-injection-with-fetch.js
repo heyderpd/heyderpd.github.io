@@ -17,14 +17,14 @@
     script.parentNode.replaceChild(elm, script)
   }
 
-  const reCreateIfIsForce = script => script => script.getAttribute('force') !== 'no'
+  const reCreateIfIsForce = script => script.getAttribute('force') !== 'no'
     ? reCreateScritp(script)
     : null
 
   const DocumentInjectionWithFetch = (url, refId, _promise, hidden) => {
     const isJavascript = /\.js$/.test(refId)
     const { resolve, reject } = _promise
-    console.log('try inject url:', url)
+    console.info('try inject url:', url)
 
     fetch(url) //, {mode: 'no-cors'})
     .then(response => {
@@ -49,9 +49,12 @@
 
         appendOrReplaceIfExist(refId, elm)
       }
-      resolvePromise()
+      resolve()
     })
-    .catch(error => console.error('AjaxDocumentInjection: "cannot load" - ', error))
+    .catch(error => {
+      console.error('AjaxDocumentInjection: "cannot load" - ', error)
+      reject()
+    })
   }
 
   const InjectionFromList = (origin, outScritps) => {
@@ -64,16 +67,23 @@
       Promise
         .all(outScritps)
         .then(() => {
-          document
-            .scripts
-            .map(script => reCreateIfIsForce(script))
-          document.onreadystatechange()
+          setTimeout(() => {
+            Array
+              .from(document.scripts)
+              .map(script => reCreateIfIsForce(script))
+          }, 1000)
         })
     } catch (error) {
       console.error('AjaxDocumentInjection:', error)
     }
   }
 
-  window.DocumentInjectionWithFetch = InjectionFromList
+  const load = () => setTimeout(
+    () => window.DocumentInjectionWithFetch = InjectionFromList,
+    100)
+
+  document.readyState !== 'complete'
+    ? document.addEventListener('DOMContentLoaded', load)
+    : load()
 })()
 /* https://github.com/heyderpd/scritp-injection-with-fetch */
