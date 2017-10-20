@@ -1,0 +1,74 @@
+<mxDefaultToolbar>
+	<add as="save" action="save" icon="mxgraph/images/save.gif"/>
+	<add as="show" action="show" icon="mxgraph/images/preview.gif"/>
+	<add as="print" action="print" icon="mxgraph/images/print.gif"/>
+	<add as="exportImage" action="exportImage" icon="mxgraph/images/image.gif"/>
+	<br/><hr/>
+	<add as="select" mode="select" icon="mxgraph/images/select.gif"/>
+	<add as="pan" mode="pan" icon="mxgraph/images/pan.gif"/>
+	<add as="connect" mode="connect" icon="mxgraph/images/connect.gif"><![CDATA[
+		function (editor)
+		{
+			if (editor.defaultEdge != null)
+			{
+				editor.defaultEdge.style = null;
+			}
+		}
+	]]></add>
+	<add as="connect" mode="connect" icon="mxgraph/images/straight.gif"><![CDATA[
+		function (editor)
+		{
+			if (editor.defaultEdge != null)
+			{
+				editor.defaultEdge.style = 'straightEdge';
+			}
+		}
+	]]></add>
+	<br/><hr/>
+	<add as="undo" action="undo" icon="mxgraph/images/undo.gif"/>
+	<add as="redo" action="redo" icon="mxgraph/images/redo.gif"/>
+	<br/><hr/>
+	<add as="cut" action="cut" icon="mxgraph/images/cut.gif"/>
+	<add as="copy" action="copy" icon="mxgraph/images/copy.gif"/>
+	<add as="paste" action="paste" icon="mxgraph/images/paste.gif"/>
+	<add as="delete" action="delete" icon="mxgraph/images/delete.gif"/>
+	<br/><hr/>
+	<add as="group" action="group" icon="mxgraph/images/group.gif"/>
+	<add as="ungroup" action="ungroup" icon="mxgraph/images/ungroup.gif"/>
+	<br/><hr/>
+	<add as="Swimlane" template="swimlane" icon="mxgraph/images/swimlane.gif"/>
+	<add as="Task" template="task" icon="mxgraph/images/rectangle.gif"/>
+	<add as="Subprocess" template="subprocess" icon="mxgraph/images/rounded.gif"/>
+	<add as="Ellipse" template="shape" style="ellipse" icon="mxgraph/images/ellipse.gif"/>
+	<add as="Rhombus" template="shape" style="rhombus" icon="mxgraph/images/rhombus.gif"/>
+	<add as="Actor" template="shape" style="actor" icon="mxgraph/images/actor.gif"/>
+	<br/><hr/>
+	<add as="Event" template="symbol" style="symbol;image=images/symbols/event.png" icon="mxgraph/images/symbols/small_event.gif"/>
+	<add as="Event (Intermediate)" template="symbol" style="symbol;image=images/symbols/event_intermediate.png" icon="mxgraph/images/symbols/small_event_intermediate.gif"/>
+	<add as="Event (End)" template="symbol" style="symbol;image=images/symbols/event_end.png" icon="mxgraph/images/symbols/small_event_end.gif"/>
+	<add as="Timer" template="symbol" style="symbol;image=images/symbols/timer.png" icon="mxgraph/images/symbols/small_timer.gif"/>
+	<add as="Message" template="symbol" style="symbol;image=images/symbols/message.png" icon="mxgraph/images/symbols/small_message.gif"/>
+	<add as="Message (Intermediate)" template="symbol" style="symbol;image=images/symbols/message_intermediate.png" icon="mxgraph/images/symbols/small_message_intermediate.gif"/>
+	<add as="Message (End)" template="symbol" style="symbol;image=images/symbols/message_end.png" icon="mxgraph/images/symbols/small_message_end.gif"/>
+	<add as="Terminate" template="symbol" style="symbol;image=images/symbols/terminate.png" icon="mxgraph/images/symbols/small_terminate.gif"/>
+	<add as="Link" template="symbol" style="symbol;image=images/symbols/link.png" icon="mxgraph/images/symbols/small_link.gif"/>
+	<add as="Rule" template="symbol" style="symbol;image=images/symbols/rule.png" icon="mxgraph/images/symbols/small_rule.gif"/>
+	<add as="Multiple" template="symbol" style="symbol;image=images/symbols/multiple.png" icon="mxgraph/images/symbols/small_multiple.gif"/>
+	<add as="Error" template="symbol" style="symbol;image=images/symbols/error.png" icon="mxgraph/images/symbols/small_error.gif"/>
+	<add as="Cancel (End)" template="symbol" style="symbol;image=images/symbols/cancel_end.png" icon="mxgraph/images/symbols/small_cancel_end.gif"/>
+	<add as="Cancel (Intermediate)" template="symbol" style="symbol;image=images/symbols/cancel_intermediate.png" icon="mxgraph/images/symbols/small_cancel_intermediate.gif"/>
+	<add as="Fork" template="symbol" style="symbol;image=images/symbols/fork.png" icon="mxgraph/images/symbols/small_fork.gif"/>
+	<add as="Merge" template="symbol" style="symbol;image=images/symbols/merge.png" icon="mxgraph/images/symbols/small_merge.gif"/>
+	<add as="Inclusive" template="symbol" style="symbol;image=images/symbols/inclusive.png" icon="mxgraph/images/symbols/small_inclusive.gif"/>
+	<br/><hr/>
+	<add as="fit" action="fit" icon="mxgraph/images/zoom.gif"/>
+	<add as="zoomIn" action="zoomIn" icon="mxgraph/images/zoomin.gif"/>
+	<add as="zoomOut" action="zoomOut" icon="mxgraph/images/zoomout.gif"/>
+	<add as="actualSize" action="actualSize" icon="mxgraph/images/zoomactual.gif"/>
+	<add as="zoom" action="zoom" icon="mxgraph/images/zoom.gif"/>
+	<br/><hr/>
+	<add as="outline" action="toggleOutline" icon="mxgraph/images/outline.gif"/>
+	<add as="tasks" action="toggleTasks" icon="mxgraph/images/tasks.gif"/>
+	<add as="help" action="toggleHelp" icon="mxgraph/images/help.gif"/>
+	<add as="console" action="toggleConsole" icon="mxgraph/images/console.gif"/>
+</mxDefaultToolbar>

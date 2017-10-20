@@ -1,0 +1,51 @@
+img.mxToolbarMode {
+	margin-right: 7px;
+}
+
+div.base {
+	position: absolute;
+	overflow: hidden;
+	font-family: Arial;
+	font-size: 8pt;
+}
+
+#graph {
+	border-style: solid;
+	border-color: #F2F2F2;
+	border-width: 1px;
+	background: url('../images/grid.gif');
+	width: 65%;
+}
+
+.json-wrp {
+	width: 29%;
+	height: 96%;
+	position: absolute;
+	right: 0;
+}
+
+#json {
+	background-color: white;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	text-align: left;
+}
+
+.graph-wrp {
+	width: 70%;
+	height: 95%;
+	top: 2%;
+	position: absolute;
+}
+
+#graph {
+	display: block;
+	position: absolute;
+	width: auto;
+	right: 0;
+	height: 100%;
+	left: 75px;
+	touch-action: none;
+}

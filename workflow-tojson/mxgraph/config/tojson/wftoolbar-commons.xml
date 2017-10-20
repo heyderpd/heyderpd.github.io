@@ -1,0 +1,17 @@
+<mxDefaultToolbar>
+	<add as="select" mode="select" icon="mxgraph/images/select.gif"/>
+	<add as="pan" mode="pan" icon="mxgraph/images/pan.gif"/>
+	<add as="undo" action="undo" icon="mxgraph/images/undo.gif"/>
+	<add as="redo" action="redo" icon="mxgraph/images/redo.gif"/>
+	<br/><hr/>
+	<add as="connect" mode="connect" icon="mxgraph/images/connect.gif"><![CDATA[
+		function (editor)
+		{
+			if (editor.defaultEdge != null)
+			{
+				editor.defaultEdge.style = null;
+			}
+		}
+	]]></add>
+	<add as="Task" template="task" icon="mxgraph/images/rectangle.gif"/>
+</mxDefaultToolbar>
