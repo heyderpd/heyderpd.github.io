@@ -50,3 +50,21 @@ div.base {
 	left: 75px;
 	touch-action: none;
 }
+
+@media (max-width: 600px) {
+	.graph-wrp {
+		width: 98%;
+		height: 67%;
+		top: 2%;
+	}
+
+	.json-wrp {
+		width: 100%;
+		height: 30%;
+		bottom: 0;
+	}
+
+	#json {
+		height: 96%;
+	}
+}
