@@ -266,7 +266,7 @@ a {
   text-align: center;
 }
 
-.trex-icon, .im-icon  {
+.trex-icon, .im-icon, .rps-icon {
   height: 100px;
   width: 100px;
   border-radius: 20px;
@@ -285,7 +285,13 @@ a {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
 
+.rps-icon {
+  background: url(/images/rock-paper-scissors.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .btn-menu {
