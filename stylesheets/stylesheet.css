@@ -266,11 +266,26 @@ a {
   text-align: center;
 }
 
-.trex-icon {
+.trex-icon, .im-icon  {
   height: 100px;
+  width: 100px;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.trex-icon  {
   background: url(/images/trex.gif);
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
+}
+
+.im-icon {
+  background: url(/images/im.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
 }
 
 .btn-menu {
