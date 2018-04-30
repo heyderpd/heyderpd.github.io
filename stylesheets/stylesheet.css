@@ -294,6 +294,13 @@ a {
   background-position: center;
 }
 
+.eightq-icon {
+  background: url(/images/eight-queens.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
 .btn-menu {
   display: flex;
   flex-wrap: wrap;
