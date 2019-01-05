@@ -21,7 +21,7 @@
     ? reCreateScritp(script)
     : null
 
-  const DocumentInjectionWithFetch = (url, refId, _promise, hidden) => {
+  const DocumentInjectionWithFetch = (url, refId, _promise, hidden, Replacer) => {
     const isJavascript = /\.js$/.test(refId)
     const { resolve, reject } = _promise
     console.info('try inject url:', url)
@@ -31,6 +31,10 @@
       return response.status === 200 || response.type === 'opaque'
         ? response.text()
         : undefined
+    })
+    .then(response => {
+      const replace = Replacer[refId]
+      return replace ? replace(response) : response
     })
     .then(response => {
       if (response) {
