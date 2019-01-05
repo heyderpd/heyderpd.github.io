@@ -61,13 +61,15 @@
     })
   }
 
-  const InjectionFromList = (origin, outScritps) => {
+  const InjectionFromList = (origin, outScritps, Replacer) => {
     try {
       outScritps
         .map(name => new Promise((resolve, reject) => DocumentInjectionWithFetch(
           `${origin}${name}`,
           name,
-          { resolve, reject })))
+          { resolve, reject },
+          false,
+          Replacer)))
       Promise
         .all(outScritps)
         .then(() => {
