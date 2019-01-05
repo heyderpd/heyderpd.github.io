@@ -1,6 +1,6 @@
 (()=>{
   const Replacer = ({
-    'aquidauana.bundle.js': str => str.replace(',window.aquidauana=u;', ',u.touch=a,window.aquidauana=u;')
+    'aquidauana.bundle.js': str => str.replace(',window.aquidauana=u', ',u.touch=a,window.aquidauana=u')
   })
   const load = () => setTimeout(
     () => {
