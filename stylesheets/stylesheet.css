@@ -266,7 +266,7 @@ a {
   text-align: center;
 }
 
-.trex-icon, .im-icon, .rps-icon, .eightq-icon {
+.trex-icon, .im-icon, .rps-icon, .eightq-icon, .cube-icon {
   height: 100px;
   width: 100px;
   border-radius: 20px;
@@ -299,6 +299,14 @@ a {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+.cube-icon {
+  background: url(/images/cube.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: contrast(100);
 }
 
 .btn-menu {
