@@ -309,6 +309,14 @@ a {
   filter: contrast(100);
 }
 
+.mail-icon {
+  background: url(/images/mail.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: contrast(100);
+}
+
 .btn-menu {
   display: flex;
   flex-wrap: wrap;
