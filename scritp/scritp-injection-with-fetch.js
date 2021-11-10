@@ -26,7 +26,7 @@
     const { resolve, reject } = _promise
     console.info('try inject url:', url)
 
-    fetch(url) //, {mode: 'no-cors'})
+    fetch(url)
     .then(response => {
       return response.status === 200 || response.type === 'opaque'
         ? response.text()
