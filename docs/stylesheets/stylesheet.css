@@ -266,7 +266,7 @@ a {
   text-align: center;
 }
 
-.trex-icon, .im-icon, .rps-icon, .eightq-icon, .cube-icon, .mail-icon {
+.trex-icon, .im-icon, .rps-icon, .eightq-icon, .cube-icon, .mail-icon, .merge-icon {
   height: 100px;
   width: 100px;
   border-radius: 20px;
@@ -311,6 +311,14 @@ a {
 
 .mail-icon {
   background: url(/images/mail.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: contrast(100);
+}
+
+.merge-icon {
+  background: url(/images/merge.gif);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
