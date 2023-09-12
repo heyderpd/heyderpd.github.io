@@ -61,24 +61,22 @@
     })
   }
 
-  const InjectionFromList = (origin, outScritps, Replacer) => {
+  const InjectionFromList = async (origin, outScritps, Replacer) => {
     try {
-      outScritps
-        .map(name => new Promise((resolve, reject) => DocumentInjectionWithFetch(
-          `${origin}${name}`,
-          name,
+      for (const fileName of outScritps) {
+        await new Promise((resolve, reject) => DocumentInjectionWithFetch(
+          `${origin}${fileName}`,
+          fileName,
           { resolve, reject },
           false,
-          Replacer)))
-      Promise
-        .all(outScritps)
-        .then(() => {
-          setTimeout(() => {
-            Array
-              .from(document.scripts)
-              .map(script => reCreateIfIsForce(script))
-          }, 1000)
-        })
+          Replacer,
+        ))
+      }
+      setTimeout(() => {
+        Array
+          .from(document.scripts)
+          .map(script => reCreateIfIsForce(script))
+      }, 1000)
     } catch (error) {
       console.error('AjaxDocumentInjection:', error)
     }
