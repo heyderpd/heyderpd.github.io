@@ -72,11 +72,9 @@
           Replacer,
         ))
       }
-      setTimeout(() => {
-        Array
-          .from(document.scripts)
-          .map(script => reCreateIfIsForce(script))
-      }, 1000)
+      Array
+        .from(document.scripts)
+        .map(script => reCreateIfIsForce(script))
     } catch (error) {
       console.error('AjaxDocumentInjection:', error)
     }
