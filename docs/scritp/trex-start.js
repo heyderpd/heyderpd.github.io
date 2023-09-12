@@ -7,7 +7,7 @@
       window.DocumentInjectionWithFetch(
         'https://raw.githubusercontent.com/heyderpd/TRexRunner/master/',
         // 'http://127.0.0.1:8080/',
-        ['robot.js', 'aquidauana.bundle.js', 'index.html'],
+        ['index.html', 'aquidauana.bundle.js', 'robot.js'],
         Replacer)
     },
     200)
