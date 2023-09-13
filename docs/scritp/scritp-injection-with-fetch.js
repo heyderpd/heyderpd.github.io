@@ -17,16 +17,18 @@
     script.parentNode.replaceChild(elm, script)
   }
 
-  const reCreateIfIsForce = script => script.getAttribute('force') !== 'no'
+  const reCreateIfIsForce = script => script.force != 'no' && script.getAttribute('force') != 'no'
     ? reCreateScritp(script)
     : null
 
   const DocumentInjectionWithFetch = (url, refId, _promise, hidden, Replacer) => {
     const isJavascript = /\.js$/.test(refId)
     const { resolve, reject } = _promise
-    console.info('try inject url:', url)
+    console.info('try inject url:', url, refId, isJavascript)
 
-    fetch(url)
+    fetch(url, {
+      // crossdomain: true,
+    })
     .then(response => {
       return response.status === 200 || response.type === 'opaque'
         ? response.text()
@@ -50,7 +52,6 @@
           elm.style.display = 'none !important'
         }
         elm.innerHTML = response
-
         appendOrReplaceIfExist(refId, elm)
       }
       resolve()
